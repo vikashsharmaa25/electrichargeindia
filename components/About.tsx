@@ -32,6 +32,7 @@ export default function About() {
                 src="/corporate_consultation.png"
                 alt="Corporate EV consulting board room meeting"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 450px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-transparent to-transparent" />

@@ -128,6 +128,7 @@ export default function Hero() {
                 alt="EV Hindustan Corp Premium Charging Hub"
                 fill
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
                 className="object-cover transition-transform duration-8000 hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-primary/30 via-transparent to-transparent" />
