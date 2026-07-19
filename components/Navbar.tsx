@@ -18,6 +18,17 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const navLinks = [
     {
       title: "Solutions",
@@ -40,10 +51,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "glass-nav py-4 shadow-sm" : "bg-transparent py-6"
-        }`}
-    >
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? "glass-nav py-4 shadow-sm" : "bg-transparent py-6"
+          }`}
+      >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo and Brand */}
         <Link href="/" className="flex items-center space-x-3 group">
@@ -150,104 +162,105 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* Mobile Drawer Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black lg:hidden"
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-80 bg-bg-base border-l border-border-subtle p-6 z-50 flex flex-col justify-between lg:hidden"
-            >
-              <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-border-subtle">
-                  <div className="flex flex-col">
-                    <span className="font-heading font-semibold text-sm text-primary">
-                      EV HINDUSTAN CORP
-                    </span>
-                    <span className="text-[9px] text-text-muted">
-                      INFRASTRUCTURE CONSULTANCY
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-2 rounded-lg hover:bg-bg-secondary border border-border-subtle transition-colors"
-                  >
-                    <X className="w-4 h-4 text-text-main" />
-                  </button>
-                </div>
-
-                <div className="space-y-5">
-                  <span className="text-xs uppercase font-semibold text-text-muted tracking-wider">
-                    Navigation
-                  </span>
-                  <div className="flex flex-col space-y-4">
-                    <Link
-                      href="#about"
-                      onClick={() => setIsOpen(false)}
-                      className="text-base font-medium text-text-main hover:text-primary transition-colors"
-                    >
-                      Who We Are
-                    </Link>
-                    <Link
-                      href="#investment-models"
-                      onClick={() => setIsOpen(false)}
-                      className="text-base font-medium text-text-main hover:text-primary transition-colors"
-                    >
-                      Investment Models
-                    </Link>
-                    <Link
-                      href="#applicants"
-                      onClick={() => setIsOpen(false)}
-                      className="text-base font-medium text-text-main hover:text-primary transition-colors"
-                    >
-                      Who Can Apply
-                    </Link>
-                    <Link
-                      href="#verification"
-                      onClick={() => setIsOpen(false)}
-                      className="text-base font-medium text-text-main hover:text-primary transition-colors"
-                    >
-                      Application Flow
-                    </Link>
-                    <Link
-                      href="#faq"
-                      onClick={() => setIsOpen(false)}
-                      className="text-base font-medium text-text-main hover:text-primary transition-colors"
-                    >
-                      FAQs
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-4 pt-6 border-t border-border-subtle">
-                <div className="flex items-center space-x-2 text-xs text-text-muted">
-                  <CheckCircle2 className="w-4 h-4 text-primary" />
-                  <span>Authorized Grid Synchronization advisory</span>
-                </div>
-                <Link
-                  href="/apply"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full text-center block py-3 bg-primary text-white text-sm font-medium rounded-xl luxury-shadow hover:bg-secondary transition-colors"
-                >
-                  Apply Online
-                </Link>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
     </nav>
-  );
+
+    {/* Mobile Drawer Overlay */}
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black lg:hidden z-90"
+            onClick={() => setIsOpen(false)}
+          />
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed right-0 top-0 bottom-0 w-80 bg-bg-base border-l border-border-subtle p-6 z-100 flex flex-col justify-between lg:hidden shadow-2xl"
+          >
+            <div className="space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-border-subtle">
+                <div className="flex flex-col">
+                  <span className="font-heading font-semibold text-sm text-primary">
+                    EV HINDUSTAN CORP
+                  </span>
+                  <span className="text-[9px] text-text-muted">
+                    INFRASTRUCTURE CONSULTANCY
+                  </span>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg hover:bg-bg-secondary border border-border-subtle transition-colors"
+                >
+                  <X className="w-4 h-4 text-text-main" />
+                </button>
+              </div>
+
+              <div className="space-y-5">
+                <span className="text-xs uppercase font-semibold text-text-muted tracking-wider">
+                  Navigation
+                </span>
+                <div className="flex flex-col space-y-4">
+                  <Link
+                    href="#about"
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-text-main hover:text-primary transition-colors"
+                  >
+                    Who We Are
+                  </Link>
+                  <Link
+                    href="#investment-models"
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-text-main hover:text-primary transition-colors"
+                  >
+                    Investment Models
+                  </Link>
+                  <Link
+                    href="#applicants"
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-text-main hover:text-primary transition-colors"
+                  >
+                    Who Can Apply
+                  </Link>
+                  <Link
+                    href="#verification"
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-text-main hover:text-primary transition-colors"
+                  >
+                    Application Flow
+                  </Link>
+                  <Link
+                    href="#faq"
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-text-main hover:text-primary transition-colors"
+                  >
+                    FAQs
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-6 border-t border-border-subtle">
+              <div className="flex items-center space-x-2 text-xs text-text-muted">
+                <CheckCircle2 className="w-4 h-4 text-primary" />
+                <span>Authorized Grid Synchronization advisory</span>
+              </div>
+              <Link
+                href="/apply"
+                onClick={() => setIsOpen(false)}
+                className="w-full text-center block py-3 bg-primary text-white text-sm font-medium rounded-xl luxury-shadow hover:bg-secondary transition-colors"
+              >
+                Apply Online
+              </Link>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  </>
+);
 }
