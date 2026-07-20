@@ -27,32 +27,32 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative w-full aspect-square md:aspect-[4/5] flex items-center justify-center min-h-[380px] sm:min-h-[440px]">
+            <div className="relative w-full aspect-square md:aspect-4/5 flex items-center justify-center min-h-95 sm:min-h-110">
               {/* Background dot grid pattern */}
-              <div className="absolute inset-0 bg-[radial-gradient(#145A4A_1.5px,transparent_1.5px)] [background-size:20px_20px] opacity-15" />
+              <div className="absolute inset-0 bg-[radial-gradient(#145A4A_1.5px,transparent_1.5px)] bg-size-[20px_20px] opacity-15" />
               
               {/* Primary Image: Corporate/Meeting */}
               <div className="absolute top-0 left-0 w-[70%] aspect-square sm:w-[75%] rounded-[24px] overflow-hidden luxury-shadow border border-border-subtle z-10 transition-transform duration-500 hover:scale-102">
                 <Image
-                  src="/corporate_consultation.png"
+                  src="/corporate_consultation.jpg"
                   alt="Corporate EV consulting board room meeting"
                   fill
                   sizes="(max-width: 768px) 70vw, 350px"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-primary/10 via-transparent to-transparent" />
               </div>
 
               {/* Secondary Image: Highway Charging */}
               <div className="absolute bottom-6 right-0 w-[65%] aspect-square rounded-[24px] overflow-hidden luxury-shadow border-2 border-white z-20 transition-transform duration-500 hover:scale-102 shadow-2xl">
                 <Image
-                  src="/highway_charging.png"
+                  src="/highway_charging.jpg"
                   alt="Highway EV fast charging station"
                   fill
                   sizes="(max-width: 768px) 65vw, 320px"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#145A4A]/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-transparent to-transparent" />
               </div>
 
               {/* Float Card */}

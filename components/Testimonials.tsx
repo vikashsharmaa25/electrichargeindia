@@ -12,7 +12,7 @@ export default function Testimonials() {
       quote: "EV Hindustan Corp navigated the entire CLU land conversion and NHAI clearance process. Today, we host standard CPO fast chargers earning monthly rent margins without operating risks.",
       rating: 5,
       type: "Highway Partnership",
-      image: "/sanjay_singhal.png"
+      image: "/sanjay_singhal.jpg"
     },
     {
       name: "Radhika Kulkarni",
@@ -20,7 +20,7 @@ export default function Testimonials() {
       quote: "Our hospitality locations required seamless integration that wouldn't drop our local power grids. The layout blueprints and step-down transformer coordination provided by EV Hindustan were outstanding.",
       rating: 5,
       type: "Hospitality Sync",
-      image: "/radhika_kulkarni.png"
+      image: "/radhika_kulkarni.jpg"
     },
     {
       name: "Vikramaditya Mehta",
@@ -28,7 +28,7 @@ export default function Testimonials() {
       quote: "The empanelment approval from DISCOM had been stuck for months. EV Hindustan Corp resolved the compliance gaps in 10 days. Exceptional speed and professional corporate team.",
       rating: 5,
       type: "Grid Liaison",
-      image: "/vikramaditya_mehta.png"
+      image: "/vikramaditya_mehta.jpg"
     },
   ];
 

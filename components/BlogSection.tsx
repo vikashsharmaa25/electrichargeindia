@@ -12,7 +12,7 @@ export default function BlogSection() {
       desc: "An in-depth guide for commercial property owners on applying for government capital incentives for charging stations.",
       date: "July 15, 2026",
       readTime: "6 Min Read",
-      image: "/blog_fame_subsidy.png"
+      image: "/blog_fame_subsidy.jpg"
     },
     {
       tag: "Technology",
@@ -20,7 +20,7 @@ export default function BlogSection() {
       desc: "Evaluating energy transmission efficiencies, charging curve gaps, and capital yields of 60kW to 150kW CSS2 chargers.",
       date: "June 28, 2026",
       readTime: "5 Min Read",
-      image: "/blog_charger_comparison.png"
+      image: "/blog_charger_comparison.jpg"
     },
     {
       tag: "Infrastructure",
@@ -28,7 +28,7 @@ export default function BlogSection() {
       desc: "Step-by-step roadmap to calculate on-site electricity loads, submit line feasibility queries, and obtain permissions.",
       date: "May 10, 2026",
       readTime: "8 Min Read",
-      image: "/blog_grid_clearance.png"
+      image: "/blog_grid_clearance.jpg"
     },
   ];
 
@@ -66,8 +66,8 @@ export default function BlogSection() {
                     sizes="(max-width: 768px) 100vw, 350px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+
                   {/* Tag Overlay */}
                   <span className="absolute top-4 left-4 inline-block text-[9px] font-bold text-white uppercase tracking-widest bg-primary px-2.5 py-1 rounded-md backdrop-blur-xs">
                     {blog.tag}

@@ -141,7 +141,7 @@ export default function Hero() {
             <div className="relative w-full max-w-120 aspect-4/5 rounded-4xl overflow-hidden shadow-[0_15px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(199,164,76,0.15)] accent-border-gradient">
               {/* Main Image */}
               <Image
-                src="/hero_ev_hub.png"
+                src="/hero.png"
                 alt="EV Hindustan Corp Premium Charging Hub"
                 fill
                 priority

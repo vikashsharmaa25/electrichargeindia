@@ -17,22 +17,22 @@ export default function Applicants() {
 
   const categoryBanners: Record<string, { image: string; title: string; subtitle: string }> = {
     all: {
-      image: "/property_commercial.png",
+      image: "/property_commercial.jpg",
       title: "Universal Grid Feasibility",
       subtitle: "Empanelling all high-yield commercial, residential, and land assets across India."
     },
     commercial: {
-      image: "/property_commercial.png",
+      image: "/property_commercial.jpg",
       title: "Commercial & Hospitality Zones",
       subtitle: "Power up premium spaces like hotels, IT parks, retail corridors, and luxury resorts."
     },
     highway: {
-      image: "/property_highway.png",
+      image: "/property_highway.jpg",
       title: "Highway & Land Depots",
       subtitle: "Transform highway plots, fuel pump stations, and logistics hubs into ultra-fast CPO nodes."
     },
     institutional: {
-      image: "/property_institutional.png",
+      image: "/property_institutional.jpg",
       title: "Institutional & Residential Hubs",
       subtitle: "Upgrade apartment societies, educational campuses, and hospital parking lots."
     }
