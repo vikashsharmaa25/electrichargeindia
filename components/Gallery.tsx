@@ -52,11 +52,11 @@ export default function Gallery() {
     },
     {
       id: 4,
-      title: "Commercial EV Stations",
+      title: "Solar-Powered Charging Hub",
       category: "stations",
       categoryLabel: "Charging Hubs",
-      subtitle: "Multi-point charging solutions tailored for employees and corporate fleet vehicles.",
-      image: "/property_commercial.png",
+      subtitle: "Integrated solar canopy charging station designed for modern corporate and retail properties.",
+      image: "/hero_ev_hub.png",
       badgeIcon: <Layers className="w-3.5 h-3.5" />,
       aspect: "aspect-video"
     },
