@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { Hotel, Fuel, Landmark, Building, MapPin, Warehouse, Trees, School, Hospital, ShieldCheck } from "lucide-react";
 
 export default function Applicants() {
@@ -13,6 +14,29 @@ export default function Applicants() {
     { id: "highway", label: "Highway & Land" },
     { id: "institutional", label: "Institutional & Residential" },
   ];
+
+  const categoryBanners: Record<string, { image: string; title: string; subtitle: string }> = {
+    all: {
+      image: "/property_commercial.png",
+      title: "Universal Grid Feasibility",
+      subtitle: "Empanelling all high-yield commercial, residential, and land assets across India."
+    },
+    commercial: {
+      image: "/property_commercial.png",
+      title: "Commercial & Hospitality Zones",
+      subtitle: "Power up premium spaces like hotels, IT parks, retail corridors, and luxury resorts."
+    },
+    highway: {
+      image: "/property_highway.png",
+      title: "Highway & Land Depots",
+      subtitle: "Transform highway plots, fuel pump stations, and logistics hubs into ultra-fast CPO nodes."
+    },
+    institutional: {
+      image: "/property_institutional.png",
+      title: "Institutional & Residential Hubs",
+      subtitle: "Upgrade apartment societies, educational campuses, and hospital parking lots."
+    }
+  };
 
   const properties = [
     { name: "Hotels & Resorts", cat: "commercial", icon: Hotel, desc: "Enhance guest retention with premium high-speed destination chargers." },
@@ -70,6 +94,44 @@ export default function Applicants() {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* Dynamic Category Showcase Banner */}
+        <div className="mb-10 max-w-7xl mx-auto overflow-hidden rounded-[24px] border border-border-subtle relative h-50 sm:h-60 md:h-70 luxury-shadow">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, scale: 1.01 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.99 }}
+              transition={{ duration: 0.35 }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={categoryBanners[activeCategory].image}
+                alt={categoryBanners[activeCategory].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover transition-transform duration-10000 hover:scale-103"
+              />
+              {/* Elegant gradient overlays */}
+              <div className="absolute inset-0 bg-linear-to-r from-primary/90 via-primary/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
+
+              {/* Text metadata overlay */}
+              <div className="absolute bottom-0 left-0 p-6 md:p-8 text-white max-w-md md:max-w-xl z-10">
+                <span className="text-[9px] font-bold text-accent uppercase tracking-widest bg-white/10 px-2.5 py-1 rounded-md mb-2.5 inline-block backdrop-blur-xs">
+                  Category Highlight
+                </span>
+                <h3 className="text-lg md:text-2xl font-semibold font-heading leading-tight mb-1">
+                  {categoryBanners[activeCategory].title}
+                </h3>
+                <p className="text-[10px] md:text-xs text-white/80 leading-relaxed font-sans font-medium">
+                  {categoryBanners[activeCategory].subtitle}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Properties Grid */}

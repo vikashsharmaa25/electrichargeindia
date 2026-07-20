@@ -109,30 +109,49 @@ export default function Timeline() {
           onMouseMove={handleMouseMove}
           className="overflow-x-auto scrollbar-none pb-8 cursor-grab"
         >
-          <div className="flex space-x-6 min-w-max px-4">
+          <div className="flex space-x-6 min-w-max px-4 pb-2">
+            {/* Inline keyframes style tag */}
+            <style dangerouslySetInnerHTML={{__html: `
+              @keyframes electricFlow {
+                0% { left: -100px; }
+                100% { left: 280px; }
+              }
+            `}} />
+
             {steps.map((step, idx) => {
               const IconComponent = step.icon;
               return (
                 <div key={idx} className="relative w-[300px] shrink-0 flex flex-col items-start group">
 
                   {/* Circle Step Number Indicator */}
-                  <div className="relative z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white border-2 border-border-subtle text-text-muted mb-6 transition-all duration-300 group-hover:border-accent group-hover:text-accent shadow-xs shrink-0">
+                  <div className="relative z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white border-2 border-border-subtle text-text-muted mb-6 transition-all duration-300 group-hover:border-accent group-hover:text-accent group-hover:scale-110 shadow-xs shrink-0 font-semibold">
                     <span className="text-xs font-bold font-heading">{step.num}</span>
                   </div>
 
                   {/* Horizontal Connector Line running between bubbles */}
                   {idx < steps.length - 1 && (
-                    <div className="absolute top-[21px] left-[44px] w-[280px] h-[2px] bg-border-subtle -z-10" />
+                    <div className="absolute top-[20px] left-[44px] w-[280px] h-[3px] bg-border-subtle -z-10 overflow-hidden rounded-full">
+                      <div 
+                        className="absolute top-0 h-full w-[80px] bg-gradient-to-r from-transparent via-accent to-transparent"
+                        style={{
+                          animation: 'electricFlow 3s linear infinite',
+                          animationDelay: `${idx * 0.3}s`
+                        }}
+                      />
+                    </div>
                   )}
 
                   {/* Content Card */}
-                  <div className="bg-white p-6 rounded-custom-lg border border-border-subtle shadow-xs hover:border-primary/20 luxury-shadow-hover w-full grow flex flex-col justify-between">
-                    <div>
+                  <div className="bg-white p-6 rounded-custom-lg border border-border-subtle shadow-xs hover:border-accent/40 luxury-shadow-hover hover:shadow-md w-full grow flex flex-col justify-between transition-all duration-350 relative overflow-hidden">
+                    {/* Background hover light effect */}
+                    <div className="absolute -inset-px bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    
+                    <div className="relative z-10">
                       <div className="flex items-center space-x-3 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shrink-0">
                           <IconComponent className="w-5 h-5 stroke-[1.5]" />
                         </div>
-                        <h3 className="font-heading font-semibold text-base text-primary">
+                        <h3 className="font-heading font-semibold text-sm md:text-base text-primary group-hover:text-[#2D7A63] transition-colors duration-300">
                           {step.title}
                         </h3>
                       </div>

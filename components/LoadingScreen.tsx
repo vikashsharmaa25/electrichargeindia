@@ -90,7 +90,7 @@ export default function LoadingScreen() {
           </div>
 
           {/* Luxury Progress Indicator */}
-          <div className="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden mt-10 relative z-10">
+          <div className="w-48 h-0.5 bg-white/10 rounded-full overflow-hidden mt-10 relative z-10">
             <motion.div
               className="h-full bg-linear-to-r from-accent to-[#e2c16e] rounded-full"
               initial={{ width: "0%" }}

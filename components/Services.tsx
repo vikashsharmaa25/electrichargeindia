@@ -88,15 +88,24 @@ export default function Services() {
                 key={idx}
                 layout
                 onClick={() => setSelectedService(isSelected ? null : idx)}
-                className={`cursor-pointer p-6 rounded-custom-lg border border-border-subtle bg-white transition-all duration-300 relative overflow-hidden flex flex-col justify-between ${isSelected ? "col-span-1 md:col-span-2 ring-2 ring-accent" : "luxury-shadow-hover"
-                  }`}
+                className={`group cursor-pointer p-6 rounded-custom-lg border bg-white transition-all duration-350 relative overflow-hidden flex flex-col justify-between ${
+                  isSelected 
+                    ? "col-span-1 md:col-span-2 border-accent ring-2 ring-accent/30 shadow-lg" 
+                    : "border-border-subtle hover:border-primary/45 luxury-shadow-hover hover:shadow-xl"
+                }`}
                 style={{ minHeight: "220px" }}
               >
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-bg-secondary flex items-center justify-center text-primary mb-5">
+                {/* Glowing gradient backdrop visible on hover */}
+                <div className="absolute -inset-px bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Visual tech matrix dot pattern on card corners */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-[radial-gradient(#C7A44C_1px,transparent_1px)] [background-size:8px_8px] opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="relative z-10">
+                  <div className="w-10 h-10 rounded-xl bg-bg-secondary flex items-center justify-center text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <IconComponent className="w-5 h-5 stroke-[1.5]" />
                   </div>
-                  <h3 className="font-heading font-semibold text-sm md:text-base text-primary mb-3">
+                  <h3 className="font-heading font-semibold text-sm md:text-base text-primary mb-3 group-hover:text-[#2D7A63] transition-colors duration-300">
                     {service.title}
                   </h3>
 
@@ -106,8 +115,8 @@ export default function Services() {
                   </p>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-[10px] font-semibold text-accent uppercase tracking-wider">
+                <div className="relative z-10 mt-4 flex items-center justify-between">
+                  <span className="text-[10px] font-semibold text-accent uppercase tracking-wider group-hover:text-primary transition-colors duration-300">
                     {isSelected ? "Collapse" : "Read Details"}
                   </span>
                   <span className="text-[11px] font-medium text-text-muted">

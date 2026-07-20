@@ -114,24 +114,31 @@ export default function InvestmentModels() {
           {models.map((model, idx) => (
             <div
               key={idx}
-              className={`relative bg-white rounded-custom-lg border p-8 flex flex-col justify-between transition-all duration-300 ${model.recommended
-                ? "border-accent ring-1 ring-accent scale-102 shadow-md"
-                : "border-border-subtle hover:border-primary/30"
-                }`}
+              className={`group relative bg-white rounded-custom-lg border p-8 flex flex-col justify-between transition-all duration-300 ${
+                model.recommended
+                  ? "border-accent ring-2 ring-accent/30 scale-[1.02] shadow-[0_15px_40px_-15px_rgba(199,164,76,0.18)] z-10"
+                  : "border-border-subtle hover:border-primary/45 luxury-shadow-hover hover:scale-[1.01]"
+              }`}
             >
               {model.recommended && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-semibold bg-accent text-primary tracking-wider uppercase">
-                  Highly Recommended
-                </span>
+                <>
+                  <div className="absolute -inset-px bg-gradient-to-br from-accent/15 via-transparent to-primary/10 rounded-custom-lg pointer-events-none" />
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[10px] font-bold bg-accent text-primary tracking-widest uppercase shadow-md flex items-center gap-1 z-20">
+                    <Zap className="w-3 h-3 fill-current animate-bounce" /> Highly Recommended
+                  </span>
+                </>
               )}
 
-              <div>
+              {/* Vector tech pattern inside cards on hover */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[radial-gradient(#145A4A_1px,transparent_1px)] [background-size:10px_10px] opacity-5 group-hover:opacity-15 transition-opacity duration-300 pointer-events-none" />
+
+              <div className="relative z-10">
                 {/* Header */}
                 <div className="mb-6">
                   <span className="text-[10px] font-semibold tracking-wider text-accent uppercase bg-bg-secondary px-2.5 py-1 rounded-md">
                     {model.badge}
                   </span>
-                  <h3 className="text-xl font-semibold font-heading text-primary mt-4 mb-2">
+                  <h3 className="text-xl font-semibold font-heading text-primary mt-4 mb-2 group-hover:text-secondary transition-colors duration-300">
                     {model.name}
                   </h3>
                   <div className="mt-4">
@@ -148,7 +155,7 @@ export default function InvestmentModels() {
                 <div className="space-y-4 mb-6">
                   <div>
                     <h4 className="text-[11px] font-semibold text-text-main uppercase tracking-wider mb-1 flex items-center">
-                      <Zap className="w-3.5 h-3.5 mr-1 text-accent" /> Chargers
+                      <Zap className="w-3.5 h-3.5 mr-1 text-accent group-hover:animate-pulse" /> Chargers
                     </h4>
                     <p className="text-xs text-text-muted leading-relaxed font-sans">{model.chargers}</p>
                   </div>
@@ -179,10 +186,11 @@ export default function InvestmentModels() {
               {/* Apply CTA */}
               <a
                 href="#apply"
-                className={`w-full text-center block py-3 text-xs font-semibold rounded-xl transition-all duration-300 ${model.recommended
-                  ? "bg-primary text-white hover:bg-secondary shadow-md"
-                  : "bg-bg-secondary text-text-main hover:bg-border-subtle"
-                  }`}
+                className={`relative z-10 w-full text-center block py-3 text-xs font-semibold rounded-xl transition-all duration-300 ${
+                  model.recommended
+                    ? "bg-primary text-white hover:bg-secondary shadow-md hover:shadow-lg"
+                    : "bg-bg-secondary text-text-main hover:bg-border-subtle"
+                }`}
               >
                 Apply For {model.name.split(" ")[0]}
               </a>

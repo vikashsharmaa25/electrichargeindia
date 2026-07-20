@@ -6,6 +6,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import InvestmentModels from "@/components/InvestmentModels";
 import Applicants from "@/components/Applicants";
+import Gallery from "@/components/Gallery";
 import Timeline from "@/components/Timeline";
 import Documents from "@/components/Documents";
 import MarketGrowth from "@/components/MarketGrowth";
@@ -23,6 +24,7 @@ export default function Home() {
       <TrustSignals />
       <About />
       <Services />
+      <Gallery />
       <InvestmentModels />
       <Applicants />
       <Timeline />

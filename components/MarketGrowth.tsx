@@ -55,8 +55,11 @@ export default function MarketGrowth() {
           </div>
 
           {/* Right Column: Dynamic SVG Infographics */}
-          <div className="lg:col-span-6 bg-white p-8 md:p-12 rounded-[32px] border border-border-subtle luxury-shadow space-y-8">
-            <div className="flex items-center justify-between">
+          <div className="lg:col-span-6 bg-white p-8 md:p-12 rounded-[32px] border border-border-subtle luxury-shadow space-y-8 relative overflow-hidden">
+            {/* Visual background grid pattern for card */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-[radial-gradient(#145A4A_1px,transparent_1px)] [background-size:12px_12px] opacity-10 pointer-events-none" />
+
+            <div className="flex items-center justify-between relative z-10">
               <div className="flex items-center space-x-2">
                 <BarChart3 className="w-5 h-5 text-accent" />
                 <h3 className="font-heading font-semibold text-base text-primary">
@@ -69,25 +72,33 @@ export default function MarketGrowth() {
             </div>
 
             {/* Custom SVG Bar Chart */}
-            <div className="relative pt-6">
-              <div className="flex items-end justify-between h-48 border-b border-border-subtle pb-2 relative">
+            <div className="relative pt-6 z-10">
+              {/* Background Horizontal Gridlines */}
+              <div className="absolute inset-x-0 top-6 bottom-10 flex flex-col justify-between pointer-events-none -z-10 opacity-70">
+                <div className="border-t border-dashed border-border-subtle w-full" />
+                <div className="border-t border-dashed border-border-subtle w-full" />
+                <div className="border-t border-dashed border-border-subtle w-full" />
+                <div className="border-t border-dashed border-border-subtle w-full" />
+              </div>
+
+              <div className="flex items-end justify-between h-48 border-b border-border-subtle pb-2 relative z-10">
                 {salesData.map((val, idx) => {
                   const maxVal = Math.max(...salesData);
                   const heightPercent = `${(val / maxVal) * 100}%`;
 
                   return (
-                    <div key={idx} className="flex flex-col items-center w-8 sm:w-12 group">
-                      {/* Bar Value Indicator */}
-                      <span className="text-[10px] font-semibold text-primary mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {val}L
+                    <div key={idx} className="flex flex-col items-center w-8 sm:w-12 group relative">
+                      {/* Bar Value Indicator (Tooltip) */}
+                      <span className="text-[9px] font-bold text-white mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute -top-7 bg-primary px-2 py-0.5 rounded shadow-lg z-20 whitespace-nowrap">
+                        {val} Lakhs
                       </span>
-                      {/* Bar Visual */}
+                      {/* Bar Visual with Rich gradient and hover glow */}
                       <motion.div
                         initial={{ height: 0 }}
                         whileInView={{ height: heightPercent }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
-                        className="w-5 sm:w-8 bg-linear-to-t from-primary to-secondary rounded-t-md hover:from-accent hover:to-accent transition-all duration-300 cursor-pointer"
+                        className="w-5 sm:w-8 bg-gradient-to-t from-primary via-secondary to-accent rounded-t-md hover:from-accent hover:to-accent hover:shadow-[0_0_15px_rgba(199,164,76,0.6)] transition-all duration-300 cursor-pointer shadow-xs"
                       />
                     </div>
                   );
@@ -95,7 +106,7 @@ export default function MarketGrowth() {
               </div>
 
               {/* X Axis Labels */}
-              <div className="flex justify-between mt-2 pt-2">
+              <div className="flex justify-between mt-2 pt-2 relative z-10">
                 {years.map((yr, idx) => (
                   <span key={idx} className="text-[10px] font-semibold text-text-muted w-8 sm:w-12 text-center">
                     {yr}
@@ -105,7 +116,7 @@ export default function MarketGrowth() {
             </div>
 
             {/* Grid Opportunity Alert */}
-            <div className="p-4 bg-primary/5 rounded-custom-md border border-primary/10 flex items-start space-x-3">
+            <div className="p-4 bg-primary/5 rounded-custom-md border border-primary/10 flex items-start space-x-3 relative z-10">
               <ShieldCheck className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <div>
                 <p className="text-xs font-semibold text-primary font-heading">
