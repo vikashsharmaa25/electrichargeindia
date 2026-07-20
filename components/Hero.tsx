@@ -41,8 +41,8 @@ export default function Hero() {
         {/* Glowing radial backdrops */}
         <div className="absolute top-0 right-0 w-[60%] h-[80%] bg-radial-to-bl from-[#185e4e]/40 via-[#0a2e26]/90 to-[#071d18] opacity-100" />
         <div className="absolute top-[15%] left-[5%] w-96 h-96 rounded-full bg-accent/5 filter blur-3xl" />
-        <div className="absolute bottom-[5%] right-[20%] w-[500px] h-[500px] rounded-full bg-primary/10 filter blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
-        
+        <div className="absolute bottom-[5%] right-[20%] w-125 h-125 rounded-full bg-primary/10 filter blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+
         {/* Animated Tech Grid Lines */}
         <svg className="absolute inset-0 w-full h-full opacity-15" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -51,11 +51,11 @@ export default function Hero() {
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-          
+
           {/* Connecting Circuit Nodes */}
           <path d="M 100 150 L 250 150 L 300 200 L 500 200" fill="none" stroke="#C7A44C" strokeWidth="2" strokeDasharray="5,5" className="animate-[dash_20s_linear_infinite]" />
           <path d="M 800 600 L 950 500 L 1200 500" fill="none" stroke="#2D7A63" strokeWidth="1.5" />
-          
+
           <circle cx="250" cy="150" r="4" fill="#C7A44C" className="animate-ping" />
           <circle cx="300" cy="200" r="3" fill="#C7A44C" />
           <circle cx="950" cy="500" r="4" fill="#2D7A63" />
@@ -85,7 +85,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white font-heading leading-[1.1] tracking-tight"
             >
-              Power Your Property with the <span className="text-accent relative inline-block">Future<span className="absolute bottom-1 left-0 w-full h-[6px] bg-accent/30 rounded" /></span> of EV Charging
+              Power Your Property with the <span className="text-accent relative inline-block">Future<span className="absolute bottom-1 left-0 w-full h-1.5 bg-accent/30 rounded" /></span> of EV Charging
             </motion.h1>
 
             {/* Narrative Subheading */}
@@ -138,7 +138,7 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             className="lg:col-span-5 relative flex justify-center"
           >
-            <div className="relative w-full max-w-[480px] aspect-4/5 rounded-[32px] overflow-hidden shadow-[0_15px_60px_-15px_rgba(0,0,0,0.8),_0_0_40px_rgba(199,164,76,0.15)] accent-border-gradient">
+            <div className="relative w-full max-w-120 aspect-4/5 rounded-4xl overflow-hidden shadow-[0_15px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(199,164,76,0.15)] accent-border-gradient">
               {/* Main Image */}
               <Image
                 src="/hero_ev_hub.png"
@@ -148,7 +148,7 @@ export default function Hero() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
                 className="object-cover transition-transform duration-8000 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a2e26]/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0a2e26]/40 via-transparent to-transparent" />
             </div>
 
             {/* Floating Glass Cards */}
